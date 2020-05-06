@@ -1,4 +1,7 @@
-.heading {
-    font-size: 20vh;
-    color: red;
+@mixin innerContent {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }

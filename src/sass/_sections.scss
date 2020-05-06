@@ -1,0 +1,102 @@
+.countries-container {
+  position: relative;
+  background-color: $grey;
+  min-height: 100vh;
+  .search-inner {
+    @include innerContent;
+    justify-content: space-between;
+    padding: 32px;
+    .search-input {
+      min-width: 480px;
+      input {
+        font-size: 1em;
+        font-family: Helvetica Neue, Arial;
+        background-color: $white;
+        width: 100%;
+        padding: 0 12px;
+        min-height: 60px;
+        border: 0;
+      }
+    }
+    .search-filter {
+      /* The dropdown container */
+      .dropdown {
+        float: left;
+        overflow: hidden;
+        padding: 20px 12px;
+        background-color: $white;
+        min-width: 200px;
+        /* Dropdown button */
+        .dropbtn {
+          border: none;
+          outline: none;
+          background-color: inherit;
+          font-family: inherit; /* Important for vertical align on mobile phones */
+          margin: 0; /* Important for vertical align on mobile phones */
+          font-size: 1em;
+        }
+      }
+
+      /* Add a red background color to navbar links on hover */
+      .navbar a:hover,
+      .dropdown:hover .dropbtn {
+        opacity: 0.8;
+      }
+
+      /* Dropdown content (hidden by default) */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: $white;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        a {
+          float: none;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+          color: $black;
+          &:hover {
+            background-color: $white;
+            opacity: 0.8;
+          }
+        }
+      }
+
+      /* Show the dropdown menu on hover */
+      .dropdown:hover .dropdown-content {
+        display: block;
+        padding: 0 40px 0 0;
+        right: 63px;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  //   countries
+  .countries-inner {
+    margin-top: 32px;
+    @include innerContent;
+    justify-content: space-around;
+    flex-flow: wrap;
+    .country-single {
+      .inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .country-image {
+          img {
+            max-width: 100%;
+          }
+        }
+        .content {
+          padding: 22px 26px;
+          .country-name {
+            font-size: 1.25em;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,15 +1,66 @@
-<!DOCTYPE html>
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-  
-        <h1 style="font-size: 20vh;color:red;">HI HI</h1>
-       
-    </body>
+<!DOCTYPE html> <!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="inner">
+        <div class="left">
+          <h1 class="heading">Where in the world?</h1>
+        </div>
+        <div class="right">
+          <span>Dark Mode</span>
+        </div>
+      </div>
+    </header>
+    <section class="countries-container">
+      <!-- search functions -->
+      <div class="search-inner">
+        <div class="search-input">
+          <input
+            type="search"
+            id="site-search"
+            name="q"
+            aria-label="Search through site content"
+            placeholder="Search for a country..."
+          />
+        </div>
+        <div class="search-filter">
+          <div class="dropdown">
+            <button class="dropbtn">
+              Filter by region
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Africa</a>
+              <a href="#">America</a>
+              <a href="#">Asia</a>
+              <a href="#">Europe</a>
+              <a href="#">Oceania</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="countries-inner">
+        <div class="country-single">
+          <div class="inner">
+            <div class="country-image">
+              <img />
+            </div>
+            <div class="content">
+              <h3 class="country-name"></h3>
+              <p class="population"><strong></strong></p>
+              <p class="region"><strong></strong></p>
+              <p class="capital"><strong></strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
