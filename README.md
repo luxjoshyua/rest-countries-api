@@ -1,4 +1,5 @@
-# easy-build-template
+# Frontend Mentors Rest API Challenge
+Challenge available <a href="https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca">here.</a>
 
 # Getting started
 
