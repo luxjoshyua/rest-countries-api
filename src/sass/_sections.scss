@@ -81,6 +81,10 @@
     justify-content: space-around;
     flex-flow: wrap;
     .country-single {
+      // fix this hack!
+      &:first-of-type {
+        display: none;
+      }
       .inner {
         display: flex;
         flex-direction: column;

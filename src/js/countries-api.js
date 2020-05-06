@@ -31,13 +31,15 @@ const countriesContainer = document.querySelector(".countries-inner");
 console.log("Here test two", data);
 const createCountry = (data) => {
   // go through each country and populate it with the data
-  console.log("This is what data looks like here", data);
+  //   console.log("This is what data looks like here", data);
   data.forEach((country) => {
     const countryItem = document.querySelector(".country-single");
 
     const clone = countryItem.cloneNode(true);
     countriesContainer.appendChild(clone);
-
+    // set the image here
+    clone.querySelector(".country-image").innerHTML =
+      "<img src=`${country.flag}`";
     clone.querySelector(".country-name").innerHTML = `${country.name}`;
     clone.querySelector(
       ".population"
