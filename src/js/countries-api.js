@@ -38,8 +38,8 @@ const createCountry = (data) => {
     const clone = countryItem.cloneNode(true);
     countriesContainer.appendChild(clone);
     // set the image here
-    clone.querySelector(".country-image").innerHTML =
-      "<img src=`${country.flag}`";
+    clone.querySelector(".country-image").setAttribute("src", `${country.flag}`);
+    clone.querySelector(".country-image").setAttribute("width", 150);
     clone.querySelector(".country-name").innerHTML = `${country.name}`;
     clone.querySelector(
       ".population"
