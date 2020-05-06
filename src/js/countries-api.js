@@ -1,7 +1,6 @@
 const apiURL = "https://restcountries.eu/rest/v2/all";
 
-const limit = 20;
-let offset = 0;
+// let offset = 0;
 let data = [];
 
 fetch(apiURL)
@@ -14,7 +13,6 @@ fetch(apiURL)
     data = res;
     console.log("This is my first data", data);
     createCountry(res);
-
     // loadMoreAirports();
     // remove class loading here
   })
@@ -26,6 +24,7 @@ fetch(apiURL)
     );
   });
 
+//   populate the country tiles
 const countriesContainer = document.querySelector(".countries-inner");
 // const singleCountryContainer = document.querySelector(".country-single");
 console.log("Here test two", data);
@@ -55,4 +54,4 @@ const createCountry = (data) => {
   });
 };
 
-// createCountry();
+// Search function

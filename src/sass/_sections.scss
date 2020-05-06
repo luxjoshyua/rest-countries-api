@@ -6,14 +6,24 @@
     @include innerContent;
     justify-content: space-between;
     padding: 32px;
+    @include sm {
+      flex-direction: column;
+    }
     .search-input {
       min-width: 480px;
+      display: flex;
+      align-items: center;
+
+      .search-icon {
+        position: relative;
+        left: 30px;
+      }
       input {
         font-size: 1em;
         font-family: Helvetica Neue, Arial;
         background-color: $white;
         width: 100%;
-        padding: 0 12px;
+        padding: 0 12px 0 40px;
         min-height: 60px;
         border: 0;
       }
@@ -21,11 +31,12 @@
     .search-filter {
       /* The dropdown container */
       .dropdown {
-        float: left;
-        overflow: hidden;
         padding: 20px 12px;
         background-color: $white;
         min-width: 200px;
+        display: flex;
+        justify-content: space-between;
+
         /* Dropdown button */
         .dropbtn {
           border: none;
@@ -35,14 +46,14 @@
           margin: 0; /* Important for vertical align on mobile phones */
           font-size: 1em;
         }
+        .down-arrow {
+        }
       }
-
-      /* Add a red background color to navbar links on hover */
       .navbar a:hover,
       .dropdown:hover .dropbtn {
         opacity: 0.8;
+        transition: all 2s ease-in-out;
       }
-
       /* Dropdown content (hidden by default) */
       .dropdown-content {
         display: none;
@@ -68,18 +79,21 @@
       .dropdown:hover .dropdown-content {
         display: block;
         padding: 0 40px 0 0;
-        right: 63px;
+        right: 32px;
+        top: 90px;
         margin-top: 8px;
+        width: 100%;
+        max-width: 200px;
       }
     }
   }
 
   //   countries
   .countries-inner {
-    margin-top: 32px;
     @include innerContent;
     justify-content: space-around;
     flex-flow: wrap;
+    padding: 16px;
     .country-single {
       background-color: $white;
       max-width: 270px;
