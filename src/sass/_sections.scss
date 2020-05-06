@@ -81,6 +81,9 @@
     justify-content: space-around;
     flex-flow: wrap;
     .country-single {
+      background-color: $white;
+      max-width: 270px;
+      margin: 20px;
       // fix this hack!
       &:first-of-type {
         display: none;
