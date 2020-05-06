@@ -63,10 +63,6 @@ searchInputField.addEventListener("keyup", (e) => {
   console.log(searchString);
   //   console.log("This is the country name", data);
 
-  //   const filteredCountries = countryNames.filter((country) => {
-  //     return country.name.includes(searchString);
-  //   });
-
   if (searchString !== "") {
     //   loop through each country
     data.forEach((country) => {
@@ -82,8 +78,4 @@ searchInputField.addEventListener("keyup", (e) => {
       }
     });
   }
-
-  //   displayCountries(filteredCountries);
 });
-
-// searchInputField();
