@@ -11,7 +11,7 @@ fetch(apiURL)
     // check the api is pulling expected data
     // console.log("this is what res looks like", res);
     data = res;
-    console.log("This is my first data", data);
+    // console.log("This is my first data", data);
     createCountry(res);
     // loadMoreAirports();
     // remove class loading here
@@ -27,13 +27,12 @@ fetch(apiURL)
 //   populate the country tiles
 const countriesContainer = document.querySelector(".countries-inner");
 // const singleCountryContainer = document.querySelector(".country-single");
-console.log("Here test two", data);
+// console.log("Here test two", data);
 const createCountry = (data) => {
   // go through each country and populate it with the data
   //   console.log("This is what data looks like here", data);
   data.forEach((country) => {
     const countryItem = document.querySelector(".country-single");
-
     const clone = countryItem.cloneNode(true);
     countriesContainer.appendChild(clone);
     // set the image here
@@ -55,3 +54,36 @@ const createCountry = (data) => {
 };
 
 // Search function
+
+// add event listener to the search input field
+const searchInputField = document.getElementById("site-search");
+// e is the event object
+searchInputField.addEventListener("keyup", (e) => {
+  const searchString = e.target.value.toLowerCase();
+  console.log(searchString);
+  //   console.log("This is the country name", data);
+
+  //   const filteredCountries = countryNames.filter((country) => {
+  //     return country.name.includes(searchString);
+  //   });
+
+  if (searchString !== "") {
+    //   loop through each country
+    data.forEach((country) => {
+      console.log("this is my data here", data);
+      console.log(country);
+      //   if the entered search matches the country name
+      if (searchString.includes(country.name)) {
+        //   add a class of visible to the relevant country
+      }
+      //   if it doesn't match the search
+      else if (!searchString.includes(country.name)) {
+        //   add a class of hidden to all the not-matching countries
+      }
+    });
+  }
+
+  //   displayCountries(filteredCountries);
+});
+
+// searchInputField();
