@@ -46,8 +46,6 @@
           margin: 0; /* Important for vertical align on mobile phones */
           font-size: 1em;
         }
-        .down-arrow {
-        }
       }
       .navbar a:hover,
       .dropdown:hover .dropbtn {
@@ -87,7 +85,6 @@
       }
     }
   }
-
   //   countries
   .countries-inner {
     @include innerContent;
@@ -119,5 +116,13 @@
         }
       }
     }
+  }
+  .visible {
+    opacity: 1;
+    transition: opacity 0.25s ease-in-out;
+  }
+  .hidden {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
   }
 }

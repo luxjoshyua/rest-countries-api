@@ -67,14 +67,16 @@ searchInputField.addEventListener("keyup", (e) => {
     //   loop through each country
     data.forEach((country) => {
       console.log("this is my data here", data);
-      console.log(country);
+      console.log("this is what country looks like", country);
       //   if the entered search matches the country name
       if (searchString.includes(country.name)) {
         //   add a class of visible to the relevant country
+        country.classList.add("visible");
       }
       //   if it doesn't match the search
       else if (!searchString.includes(country.name)) {
         //   add a class of hidden to all the not-matching countries
+        country.classList.add("hidden");
       }
     });
   }
