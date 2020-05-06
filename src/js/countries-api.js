@@ -54,30 +54,3 @@ const createCountry = (data) => {
 };
 
 // createCountry();
-
-// data.forEach((airport) => {
-//   // select each airport item entry, specifically the parent content div, as its children is what you need
-//   // to dynamically change each time
-//   const airportItem = document
-//     .getElementById("airport-list-item")
-//     .querySelector(".content");
-//   // clone the div setup that contains my first screen content
-//   const clone = airportItem.cloneNode(true);
-//   // console.log(clone);
-//   airportContainer.appendChild(clone);
-//   // access the api airportName dataset using dot notation
-//   clone.querySelector(".name").innerHTML = `${airport.airportName}`;
-//   // access the api countryName dataset using dot notation
-//   clone.querySelector(".country").innerHTML = `${airport.country.countryName}`;
-
-//   // setup an event listener for each airport,
-//   // if the user clicks on the right arrow,
-//   // show the individual airport screen
-//   clone.addEventListener("click", (e) => {
-//     updateSingleAirport(airport);
-//     window.scrollTo(0, 0);
-//     // checks if the click was registered on the more details box
-//     airportContainer.style.display = "none";
-//     singleAirportContainer.style.display = "block";
-//   });
-// });
