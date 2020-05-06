@@ -3,7 +3,7 @@ Challenge available <a href="https://www.frontendmentor.io/challenges/rest-count
 
 # Getting started
 
-1. \$ git clone <source>
+1. \$ git clone source
 2. \$ nvm use
 3. \$ npm i
 
