@@ -159,3 +159,21 @@ const updateSingleCountry = (country) => {
 
     borderCountries.appendChild(clone);
   });
+
+};
+
+// getCountryDetails
+// params
+// countryQuery (France, FRA, FR, etc)
+// idType (name, alpha2Code, alpha3Code, etc)
+//
+let returnVal;
+function getCountryDetails( countryQuery, idType ){
+
+  data.some( function( country ) {
+    if(country[idType] === countryQuery ){
+      returnVal = country;
+    }
+  });
+  return returnVal;
+}
