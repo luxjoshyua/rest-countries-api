@@ -151,6 +151,7 @@ const updateSingleCountry = (country) => {
     bordersStr += country.borders;
   });
 
+  borderCountries.innerHTML = `<strong>Borders: </strong> ${bordersStr}`;
   //   borderCountries.innerHTML = `<strong>Border Countries: </strong> ${bordersStr}`;
 
   //   go back button
