@@ -25,7 +25,7 @@ fetch(apiURL)
 
 //   populate the country tiles
 const countriesContainer = document.querySelector(".countries-inner");
-// const singleCountryContainer = document.querySelector(".country-single");
+const searchBar = document.querySelector(".search-inner");
 // console.log("Here test two", data);
 const createCountry = (data) => {
   // go through each country and populate it with the data
@@ -58,6 +58,8 @@ const createCountry = (data) => {
       //   window.scrollTo(0, 0);
       countriesContainer.style.display = "none";
       countrySecondScreen.style.display = "block";
+      //   hide the searchbar on second screen
+      searchBar.style.display = "none";
     });
   });
 };
