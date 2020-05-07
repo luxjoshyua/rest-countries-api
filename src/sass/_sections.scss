@@ -132,6 +132,7 @@
     .back-button {
       border: 1px solid black;
       padding: 24px;
+      margin-left: 32px;
       span {
         padding: 8px 12px;
         line-height: 1.5rem;
@@ -141,16 +142,26 @@
       @include innerContent;
       height: 100%;
       justify-content: space-between;
+      align-items: flex-start;
       .flag-image {
         border: 1px solid blueviolet;
         max-width: 560px;
       }
       .content {
         border: 1px solid blue;
+        min-width: 460px;
+        padding: 36px 16px;
         .heading {
           padding-bottom: 16px;
           .country-name {
             font-size: 1.5rem;
+          }
+        }
+        .details-wrapper {
+          display: flex;
+          flex-direction: column;
+          p {
+            margin: 0 0 1em;
           }
         }
       }
