@@ -18,6 +18,12 @@ body {
 body {
   font-family: Helvetica Neue, Arial;
   font-weight: 400;
+  background-color: $white;
+  color: $black;
+}
+body.inverted {
+  color: $white;
+  background-color: $black;
 }
 
 h1,

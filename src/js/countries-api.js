@@ -61,7 +61,7 @@ const searchInputField = document.getElementById("site-search");
 // e is the event object
 searchInputField.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
-  console.log(searchString);
+  //   console.log(searchString);
   //   console.log("This is the country name", data);
   //   loop through each country
   data.forEach((country) => {
@@ -70,9 +70,9 @@ searchInputField.addEventListener("keyup", (e) => {
     //   if the entered search matches the country name
     // let tSelector = ;
     let tCountryName = country.name.toLowerCase();
-    let countryDOM = document.querySelector( '.country-' + country.alpha3Code );
+    let countryDOM = document.querySelector(".country-" + country.alpha3Code);
     console.log("searchString = ", searchString);
-    if ( tCountryName.includes( searchString ) ) {
+    if (tCountryName.includes(searchString)) {
       //   add a class of visible to the relevant country
       countryDOM.classList.add("visible");
       countryDOM.classList.remove("hidden");
@@ -83,5 +83,9 @@ searchInputField.addEventListener("keyup", (e) => {
       countryDOM.classList.add("hidden");
       countryDOM.classList.remove("visible");
     }
+    // if input field is empty, add class visible to all countries
+    // if (searchInputField.value <= 0) {
+    //   countryDOM.classList.add("visible");
+    // }
   });
 });
