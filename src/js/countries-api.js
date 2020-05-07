@@ -107,8 +107,20 @@ const updateSingleCountry = (country) => {
   countryName.innerHTML = `${country.name}`;
   //  set the native name
   const nativeName = countrySecondScreen.querySelector(".native-name");
-  nativeName.innerHTML = `${country.nativeName}`;
+  nativeName.innerHTML = `<strong>Native Name: </strong>${country.nativeName}`;
   //   set the population
   const population = countrySecondScreen.querySelector(".population");
-  population.innerHTML = `${country.population}`;
+  population.innerHTML = `<strong>Population: </strong>${country.population}`;
+  //   set the region
+  const region = countrySecondScreen.querySelector(".region");
+  region.innerHTML = `<strong>Region: </strong>${country.region}`;
+  //   set the subregion
+  const subRegion = countrySecondScreen.querySelector(".sub-region");
+  subRegion.innerHTML = `<strong>Sub Region: </strong>${country.subregion}`;
+  //   set the capital
+  const capital = countrySecondScreen.querySelector(".capital");
+  capital.innerHTML = `<strong>Capital: </strong>${country.capital}`;
+  //   set the domain name
+  const domainName = countrySecondScreen.querySelector(".domain-name");
+  domainName.innerHTML = `<strong>Top Level Domain: </strong>${country.topLevelDomain}`;
 };
