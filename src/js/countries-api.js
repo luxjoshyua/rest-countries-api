@@ -134,4 +134,28 @@ const updateSingleCountry = (country) => {
     currenciesStr += currency.name;
   });
   currency.innerHTML = `<strong>Currencies: </strong> ${currenciesStr}`;
-};
+
+  //   set the languages
+  const languages = countrySecondScreen.querySelector(".languages");
+  let languagesStr = '';
+  country.languages.forEach( (language, key) => {
+    if( key > 0 ){
+      languagesStr += ', ';
+    }
+    languagesStr += language.name;
+  });
+  languages.innerHTML = `<strong>Languages: </strong> ${languagesStr}`;
+  
+  //   set the border countries
+  const borderCountries = countrySecondScreen.querySelector(".border-countries");
+  const borderTitles = countrySecondScreen.querySelector(".border-countries .border-title");
+  country.borders.forEach( (border) => {
+    // languagesStr += language.name;
+    const clone = borderTitles.cloneNode(true);
+    
+    let borderCountry = getCountryDetails( border, 'alpha3Code' );
+    clone.innerHTML = borderCountry.name;
+    // console.log( "getCountryDetails ",  borderCountry);
+
+    borderCountries.appendChild(clone);
+  });
