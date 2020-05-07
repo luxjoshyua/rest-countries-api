@@ -123,4 +123,15 @@ const updateSingleCountry = (country) => {
   //   set the domain name
   const domainName = countrySecondScreen.querySelector(".domain-name");
   domainName.innerHTML = `<strong>Top Level Domain: </strong>${country.topLevelDomain}`;
+
+  //   set the currency
+  const currency = countrySecondScreen.querySelector(".currencies");
+  let currenciesStr = '';
+  country.currencies.forEach( (currency, key) => {
+    if( key > 0 ){
+      currenciesStr += ', ';
+    }
+    currenciesStr += currency.name;
+  });
+  currency.innerHTML = `<strong>Currencies: </strong> ${currenciesStr}`;
 };
