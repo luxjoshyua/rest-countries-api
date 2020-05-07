@@ -13,7 +13,6 @@ fetch(apiURL)
     data = res;
     // console.log("This is my first data", data);
     createCountry(res);
-    // loadMoreAirports();
     // remove class loading here
   })
   .catch((error) => {
@@ -51,18 +50,24 @@ const createCountry = (data) => {
     clone.querySelector(
       ".capital"
     ).innerHTML = `<strong>Capital: </strong>${country.capital}`;
+
+    // show the country slide for a single country
+    clone.addEventListener("click", (e) => {
+      //   console.log("Here is my country click registering", e);
+      updateSingleCountry(country);
+      //   window.scrollTo(0, 0);
+      countriesContainer.style.display = "none";
+      countrySecondScreen.style.display = "block";
+    });
   });
 };
 
 // Search function
-
 // add event listener to the search input field
 const searchInputField = document.getElementById("site-search");
 // e is the event object
 searchInputField.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
-  //   console.log(searchString);
-  //   console.log("This is the country name", data);
   //   loop through each country
   data.forEach((country) => {
     // console.log("this is my data here", data);
@@ -71,7 +76,7 @@ searchInputField.addEventListener("keyup", (e) => {
     // let tSelector = ;
     let tCountryName = country.name.toLowerCase();
     let countryDOM = document.querySelector(".country-" + country.alpha3Code);
-    console.log("searchString = ", searchString);
+    // console.log("searchString = ", searchString);
     if (tCountryName.includes(searchString)) {
       //   add a class of visible to the relevant country
       countryDOM.classList.add("visible");
@@ -83,9 +88,27 @@ searchInputField.addEventListener("keyup", (e) => {
       countryDOM.classList.add("hidden");
       countryDOM.classList.remove("visible");
     }
-    // if input field is empty, add class visible to all countries
-    // if (searchInputField.value <= 0) {
-    //   countryDOM.classList.add("visible");
-    // }
   });
 });
+
+// Single country second screen view
+// Select the second screen view
+const countrySecondScreen = document.querySelector(".country-second-screen");
+console.log(countrySecondScreen);
+
+const updateSingleCountry = (country) => {
+  console.log("This is what country looks like", country);
+  //   set the flag image
+  const countryFlagImage = countrySecondScreen.querySelector(".flag-image img");
+  countryFlagImage.setAttribute("src", `${country.flag}`);
+  countryFlagImage.setAttribute("width", "100%");
+  //   set the country name
+  const countryName = countrySecondScreen.querySelector(".country-name");
+  countryName.innerHTML = `${country.name}`;
+  //  set the native name
+  const nativeName = countrySecondScreen.querySelector(".native-name");
+  nativeName.innerHTML = `${country.nativeName}`;
+  //   set the population
+  const population = countrySecondScreen.querySelector(".population");
+  population.innerHTML = `${country.population}`;
+};

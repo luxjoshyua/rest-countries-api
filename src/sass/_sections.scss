@@ -1,7 +1,6 @@
 .countries-container {
   position: relative;
   background-color: $grey;
-  min-height: 100vh;
   .search-inner {
     @include innerContent;
     justify-content: space-between;
@@ -13,7 +12,6 @@
       min-width: 480px;
       display: flex;
       align-items: center;
-
       .search-icon {
         position: relative;
         left: 30px;
@@ -124,24 +122,38 @@
   .hidden {
     opacity: 0;
     transition: opacity 0.25s ease-in-out;
-    // height: 0;
-    // width: 0;
-    // margin: 0 !important;
     display: none !important;
   }
-}
-.inverted{
-  .countries{
-    &-container{
-      background-color: #333333;
-      .country{
-        &-single{
-          background-color: #000000;
+
+  .country-second-screen {
+    display: none;
+    background-color: $white;
+    min-height: 540px;
+    .back-button {
+      border: 1px solid black;
+      padding: 24px;
+      span {
+        padding: 8px 12px;
+        line-height: 1.5rem;
+      }
+    }
+    .inner {
+      @include innerContent;
+      height: 100%;
+      justify-content: space-between;
+      .flag-image {
+        border: 1px solid blueviolet;
+        max-width: 560px;
+      }
+      .content {
+        border: 1px solid blue;
+        .heading {
+          padding-bottom: 16px;
+          .country-name {
+            font-size: 1.5rem;
+          }
         }
       }
     }
   }
-}
-.dark-mode{
-  cursor: pointer;
 }
