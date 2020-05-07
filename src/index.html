@@ -7,6 +7,10 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      src="https://kit.fontawesome.com/eb605637ff.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header class="header">
@@ -15,6 +19,7 @@
           <h1 class="heading">Where in the world?</h1>
         </div>
         <div class="right">
+          <i class="far fa-moon"></i>
           <span class="dark-mode">Dark Mode</span>
         </div>
       </div>
@@ -24,8 +29,8 @@
       <div class="search-inner">
         <div class="search-input">
           <span class="search-icon">
-                &#x1F50E    
-            </span>
+            <i class="fas fa-search"></i>
+          </span>
           <input
             type="search"
             id="site-search"
@@ -40,7 +45,7 @@
               Filter by region
             </button>
             <span class="down-arrow">
-              &#8595;
+              <i class="fas fa-arrow-down"></i>
             </span>
             <div class="dropdown-content">
               <a href="#">Africa</a>
@@ -55,7 +60,7 @@
       <div class="countries-inner">
         <div class="country-single">
           <div class="inner">
-            <div>
+            <div class="country-image-wrapper">
               <img class="country-image" />
             </div>
             <div class="content">
@@ -70,32 +75,29 @@
       <!-- second country screen -->
       <div class="country-second-screen">
         <button class="back-button">
-            <span>&larr; Back</span>
+          <span>&larr; Back</span>
         </button>
-          <div class="inner">
-              <div class="flag-image">
-                <img class="country-second-image">
-              </div>
-              <div class="content">
-                  <div class="heading">
-                    <h3 class="country-name"></h3>
-                  </div>
-                <div class="details-wrapper">
-                    <p class="native-name"><strong></strong></p>
-                    <p class="population"><strong></strong></p>
-                    <p class="region"><strong></strong></p>
-                    <p class="sub-region"><strong></strong></p>
-                    <p class="capital"><strong></strong></p>
-                    <p class="domain-name"><strong></strong></p>
-                    <p class="currency"><strong></strong></p>
-                    <p class="languages"><strong></strong></p>
-                    <div class="border-countries">
-                        
-                    </div>
-                </div>
-              </div>
+        <div class="inner">
+          <div class="flag-image">
+            <img class="country-second-image" />
           </div>
-
+          <div class="content">
+            <div class="heading">
+              <h3 class="country-name"></h3>
+            </div>
+            <div class="details-wrapper">
+              <p class="native-name"><strong></strong></p>
+              <p class="population"><strong></strong></p>
+              <p class="region"><strong></strong></p>
+              <p class="sub-region"><strong></strong></p>
+              <p class="capital"><strong></strong></p>
+              <p class="domain-name"><strong></strong></p>
+              <p class="currency"><strong></strong></p>
+              <p class="languages"><strong></strong></p>
+              <div class="border-countries"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </body>
