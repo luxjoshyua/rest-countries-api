@@ -70,8 +70,7 @@ searchInputField.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   //   loop through each country
   data.forEach((country) => {
-    // console.log("this is my data here", data);
-    // console.log("this is what country looks like", country);
+    console.log("this is my data here", data);
     //   if the entered search matches the country name
     // let tSelector = ;
     let tCountryName = country.name.toLowerCase();
@@ -94,7 +93,6 @@ searchInputField.addEventListener("keyup", (e) => {
 // Single country second screen view
 // Select the second screen view
 const countrySecondScreen = document.querySelector(".country-second-screen");
-console.log(countrySecondScreen);
 
 const updateSingleCountry = (country) => {
   console.log("This is what country looks like", country);
@@ -123,4 +121,43 @@ const updateSingleCountry = (country) => {
   //   set the domain name
   const domainName = countrySecondScreen.querySelector(".domain-name");
   domainName.innerHTML = `<strong>Top Level Domain: </strong>${country.topLevelDomain}`;
+
+  //   set the currency
+  const currency = countrySecondScreen.querySelector(".currency");
+  currency.innerHTML = `<strong>Currency: </strong>${country.currencies[0].name}`;
+
+  //   set the languages
+  const languages = countrySecondScreen.querySelector(".languages");
+  let languagesStr = "";
+  country.languages.forEach((language, key) => {
+    if (key > 0) {
+      languagesStr += ", ";
+    }
+    languagesStr += language.name;
+  });
+  languages.innerHTML = `<strong>Languages: </strong> ${languagesStr}`;
+
+  //   set the border countries
+  const borderCountries = countrySecondScreen.querySelector(
+    ".border-countries"
+  );
+
+  let bordersStr = "";
+  country.borders.forEach((border, key) => {
+    const borderElement = document.createElement("span");
+    if (key > 0) {
+      bordersStr += ", ";
+    }
+    bordersStr += country.borders;
+  });
+
+  //   borderCountries.innerHTML = `<strong>Border Countries: </strong> ${bordersStr}`;
+
+  //   go back button
+  const goBackButton = document.querySelector(".back-button");
+  goBackButton.addEventListener("click", (e) => {
+    // console.log("This is me clicking the back button", e);
+    countrySecondScreen.style.display = "none";
+    countriesContainer.style.display = "flex";
+  });
 };
