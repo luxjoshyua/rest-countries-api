@@ -36,6 +36,7 @@ const createCountry = (data) => {
     const clone = countryItem.cloneNode(true);
     countriesContainer.appendChild(clone);
     // set the image here
+    clone.classList.add("country-" + `${country.alpha3Code}`);
     clone
       .querySelector(".country-image")
       .setAttribute("src", `${country.flag}`);
