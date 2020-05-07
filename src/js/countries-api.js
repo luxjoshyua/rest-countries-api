@@ -162,5 +162,6 @@ const updateSingleCountry = (country) => {
     // console.log("This is me clicking the back button", e);
     countrySecondScreen.style.display = "none";
     countriesContainer.style.display = "flex";
+    searchBar.style.display = "flex";
   });
 };
