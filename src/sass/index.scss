@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap");
 @import "media-queries";
 @import "variables";
 @import "utilities";
@@ -17,7 +18,7 @@ body {
 }
 
 body {
-  font-family: Helvetica Neue, Arial;
+  font-family: "Nunito Sans", sans-serif;
   font-weight: 400;
   background-color: $white;
   color: $black;

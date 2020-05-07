@@ -1,6 +1,6 @@
 .countries-container {
   position: relative;
-  background-color: $grey;
+  background-color: $cream;
   .search-inner {
     @include innerContent;
     justify-content: space-between;
@@ -24,6 +24,7 @@
         padding: 0 12px 0 40px;
         min-height: 60px;
         border: 0;
+        border-radius: 4px;
       }
     }
     .search-filter {
@@ -34,6 +35,7 @@
         min-width: 200px;
         display: flex;
         justify-content: space-between;
+        border-radius: 4px;
 
         /* Dropdown button */
         .dropbtn {
@@ -97,6 +99,11 @@
       &:first-of-type {
         display: none;
       }
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+        transition: scale 1s ease-in-out;
+      }
       .inner {
         display: flex;
         flex-direction: column;
@@ -145,11 +152,9 @@
       align-items: flex-start;
       margin-top: 32px;
       .flag-image {
-        border: 1px solid blueviolet;
         max-width: 560px;
       }
       .content {
-        border: 1px solid blue;
         min-width: 460px;
         padding: 36px 16px;
         .heading {
