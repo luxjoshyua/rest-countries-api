@@ -63,22 +63,25 @@ searchInputField.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   console.log(searchString);
   //   console.log("This is the country name", data);
-
-  if (searchString !== "") {
-    //   loop through each country
-    data.forEach((country) => {
-      console.log("this is my data here", data);
-      console.log("this is what country looks like", country);
-      //   if the entered search matches the country name
-      if (searchString.includes(country.name)) {
-        //   add a class of visible to the relevant country
-        country.classList.add("visible");
-      }
-      //   if it doesn't match the search
-      else if (!searchString.includes(country.name)) {
-        //   add a class of hidden to all the not-matching countries
-        country.classList.add("hidden");
-      }
-    });
-  }
+  //   loop through each country
+  data.forEach((country) => {
+    // console.log("this is my data here", data);
+    // console.log("this is what country looks like", country);
+    //   if the entered search matches the country name
+    // let tSelector = ;
+    let tCountryName = country.name.toLowerCase();
+    let countryDOM = document.querySelector( '.country-' + country.alpha3Code );
+    console.log("searchString = ", searchString);
+    if ( tCountryName.includes( searchString ) ) {
+      //   add a class of visible to the relevant country
+      countryDOM.classList.add("visible");
+      countryDOM.classList.remove("hidden");
+    }
+    //   if it doesn't match the search
+    else {
+      //   add a class of hidden to all the not-matching countries
+      countryDOM.classList.add("hidden");
+      countryDOM.classList.remove("visible");
+    }
+  });
 });
