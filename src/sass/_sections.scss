@@ -130,3 +130,18 @@
     display: none !important;
   }
 }
+.inverted{
+  .countries{
+    &-container{
+      background-color: #333333;
+      .country{
+        &-single{
+          background-color: #000000;
+        }
+      }
+    }
+  }
+}
+.dark-mode{
+  cursor: pointer;
+}
