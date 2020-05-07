@@ -14,23 +14,27 @@
       display: flex;
       align-items: center;
       box-shadow: -2px 4px 26px -4px #0000008a;
+      background-color: $white;
       @include sm {
         min-width: 340px;
         justify-content: center;
       }
-      .search-icon {
-        position: relative;
-        left: 30px;
+      .fas {
+        padding-left: 12px;
       }
+
       input {
         font-size: 1em;
         line-height: 1.5em;
         background-color: $white;
         width: 100%;
-        padding: 0 12px 0 40px;
+        padding: 0 24px;
         min-height: 60px;
         border: 0;
         border-radius: 4px;
+        &:focus {
+          outline: none;
+        }
       }
     }
     .search-filter {
@@ -153,33 +157,52 @@
     @include sm {
       margin-top: 0;
     }
-    .back-button {
-      box-shadow: -2px 4px 26px -4px #0000008a;
-      padding: 12px 24px;
-      border: 0px;
-      margin: 32px 32px 0 0;
-      span {
-        padding: 8px 12px;
-        line-height: 1.5rem;
+    .inner {
+      @include innerContent;
+      &:first-of-type {
+        margin-top: 0;
+        justify-content: flex-start;
+        @include sm {
+          align-items: flex-start;
+          padding: 0px 32px;
+        }
+      }
+      .back-button {
+        box-shadow: -2px 4px 26px -4px #0000008a;
+        padding: 12px 24px;
+        border: 0px;
+        margin: 32px 32px 0 0;
+        background-color: transparent;
+        span {
+          padding: 8px 12px;
+          line-height: 1.5rem;
+        }
       }
     }
+
     .inner {
       @include innerContent;
       height: 100%;
-      justify-content: space-evenly;
+      justify-content: space-between;
       align-items: flex-start;
       margin-top: 32px;
       @include sm {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 0;
       }
       .flag-image {
         max-width: 560px;
       }
       .content {
-        max-width: 560px;
+        min-width: 600px;
+        max-width: 640px;
         padding: 36px 16px;
+        @include sm {
+          min-width: 320px;
+          max-width: 100%;
+        }
         .heading {
           padding-bottom: 16px;
           .country-name {
