@@ -4,6 +4,7 @@
 @import "fonts";
 @import "sections";
 @import "hero";
+@import "dark-mode";
 
 html,
 body {
@@ -20,10 +21,6 @@ body {
   font-weight: 400;
   background-color: $white;
   color: $black;
-}
-body.inverted {
-  color: $white;
-  background-color: $black;
 }
 
 h1,
