@@ -148,13 +148,24 @@ const updateSingleCountry = (country) => {
   
   //   set the border countries
   const borderCountries = countrySecondScreen.querySelector(".border-countries");
-  const borderTitles = countrySecondScreen.querySelector(".border-countries .border-title");
+  // const borderTitles = countrySecondScreen.querySelector(".border-countries .border-title");
+  const borderTitlesAll = countrySecondScreen.querySelectorAll(".border-countries .border-title");
+  borderTitlesAll.forEach(borderTitle => {
+    borderTitle.remove();
+  });
+
+  const borderTitles = document.createElement('p');
+  borderTitles.classList.add('border-title');
+  
   country.borders.forEach( (border) => {
     // languagesStr += language.name;
     const clone = borderTitles.cloneNode(true);
     
     let borderCountry = getCountryDetails( border, 'alpha3Code' );
     clone.innerHTML = borderCountry.name;
+    clone.addEventListener("click", (e) => {
+      updateSingleCountry( borderCountry );
+    });
     // console.log( "getCountryDetails ",  borderCountry);
 
     borderCountries.appendChild(clone);
