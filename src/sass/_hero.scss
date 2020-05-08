@@ -7,19 +7,21 @@
   .inner {
     @include innerContent;
     justify-content: space-between;
-    // padding: 22px 32px;
+    @include sm {
+      padding: 12px 16px;
+    }
     .left {
       .heading {
-        font-weight: 500;
+        font-weight: 700;
         font-size: 1.5em;
+        @include sm {
+          font-size: 1.2em;
+        }
       }
     }
     .right {
-      span {
-        &:before {
-          content: "☾";
-          padding-right: 8px;
-        }
+      i {
+        padding-right: 6px;
       }
     }
   }
