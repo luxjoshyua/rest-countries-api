@@ -25,7 +25,7 @@ fetch(apiURL)
 
 //   populate the country tiles
 const countriesContainer = document.querySelector(".countries-inner");
-// const singleCountryContainer = document.querySelector(".country-single");
+const searchBar = document.querySelector(".search-inner");
 // console.log("Here test two", data);
 const createCountry = (data) => {
   // go through each country and populate it with the data
@@ -58,6 +58,8 @@ const createCountry = (data) => {
       //   window.scrollTo(0, 0);
       countriesContainer.style.display = "none";
       countrySecondScreen.style.display = "block";
+      //   hide the searchbar on second screen
+      searchBar.style.display = "none";
     });
   });
 };
@@ -71,7 +73,6 @@ searchInputField.addEventListener("keyup", (e) => {
   //   loop through each country
   data.forEach((country) => {
     // console.log("this is my data here", data);
-    // console.log("this is what country looks like", country);
     //   if the entered search matches the country name
     // let tSelector = ;
     let tCountryName = country.name.toLowerCase();
@@ -94,7 +95,6 @@ searchInputField.addEventListener("keyup", (e) => {
 // Single country second screen view
 // Select the second screen view
 const countrySecondScreen = document.querySelector(".country-second-screen");
-console.log(countrySecondScreen);
 
 const updateSingleCountry = (country) => {
   console.log("This is what country looks like", country);
@@ -158,6 +158,15 @@ const updateSingleCountry = (country) => {
     // console.log( "getCountryDetails ",  borderCountry);
 
     borderCountries.appendChild(clone);
+  });
+
+  //   go back button
+  const goBackButton = document.querySelector(".back-button");
+  goBackButton.addEventListener("click", (e) => {
+    // console.log("This is me clicking the back button", e);
+    countrySecondScreen.style.display = "none";
+    countriesContainer.style.display = "flex";
+    searchBar.style.display = "flex";
   });
 
 };
