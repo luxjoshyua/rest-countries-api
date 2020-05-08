@@ -11,7 +11,6 @@ fetch(apiURL)
     // check the api is pulling expected data
     // console.log("this is what res looks like", res);
     data = res;
-    // console.log("This is my first data", data);
     createCountry(res);
     // remove class loading here
   })
@@ -53,7 +52,6 @@ const createCountry = (data) => {
 
     // show the country slide for a single country
     clone.addEventListener("click", (e) => {
-      //   console.log("Here is my country click registering", e);
       updateSingleCountry(country);
       //   window.scrollTo(0, 0);
       countriesContainer.style.display = "none";
@@ -74,7 +72,6 @@ searchInputField.addEventListener("keyup", (e) => {
   data.forEach((country) => {
     // console.log("this is my data here", data);
     //   if the entered search matches the country name
-    // let tSelector = ;
     let tCountryName = country.name.toLowerCase();
     let countryDOM = document.querySelector(".country-" + country.alpha3Code);
     // console.log("searchString = ", searchString);
@@ -97,7 +94,6 @@ searchInputField.addEventListener("keyup", (e) => {
 const countrySecondScreen = document.querySelector(".country-second-screen");
 
 const updateSingleCountry = (country) => {
-  //   console.log("This is what country looks like", country);
   //   set the flag image
   const countryFlagImage = countrySecondScreen.querySelector(".flag-image img");
   countryFlagImage.setAttribute("src", `${country.flag}`);
@@ -146,23 +142,15 @@ const updateSingleCountry = (country) => {
   });
   languages.innerHTML = `<strong>Languages: </strong> ${languagesStr}`;
 
-  //   set the border countries
+  // set the border countries
   const borderCountries = countrySecondScreen.querySelector(
     ".border-countries"
   );
-  // const borderTitles = countrySecondScreen.querySelector(".border-countries .border-title");
+
   const borderTitlesAll = countrySecondScreen.querySelectorAll(
     ".border-countries .border-title"
   );
-  //   select the border country heading
-  const borderCountryHeading = countrySecondScreen.querySelector("h4");
 
-  // hide the border country heading if it doesn't exist
-  if (borderTitlesAll.length >= 1) {
-    borderCountryHeading.style.display = "none";
-  } else {
-    borderCountryHeading.style.display = "block";
-  }
   // remove the pre-existing border titles append to the DOM when user goes to new country
   borderTitlesAll.forEach((borderTitle) => {
     borderTitle.remove();
@@ -172,10 +160,16 @@ const updateSingleCountry = (country) => {
   borderTitles.classList.add("border-title");
 
   country.borders.forEach((border) => {
-    // languagesStr += language.name;
     const clone = borderTitles.cloneNode(true);
 
     let borderCountry = getCountryDetails(border, "alpha3Code");
+    console.log("here is my border country", borderCountry.borders);
+
+    if (borderCountry.borders <= 0) {
+      console.log("no border country");
+      document.querySelector(".border-countries h4").style.display = "none";
+    }
+
     clone.innerHTML = borderCountry.name;
 
     clone.addEventListener("click", (e) => {
@@ -188,7 +182,6 @@ const updateSingleCountry = (country) => {
   //   go back button
   const goBackButton = document.querySelector(".back-button");
   goBackButton.addEventListener("click", (e) => {
-    // console.log("This is me clicking the back button", e);
     countrySecondScreen.style.display = "none";
     countriesContainer.style.display = "flex";
     searchBar.style.display = "flex";
@@ -199,7 +192,6 @@ const updateSingleCountry = (country) => {
 // params
 // countryQuery (France, FRA, FR, etc)
 // idType (name, alpha2Code, alpha3Code, etc)
-//
 let returnVal;
 function getCountryDetails(countryQuery, idType) {
   data.some(function (country) {
