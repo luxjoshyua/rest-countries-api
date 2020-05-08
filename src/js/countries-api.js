@@ -158,17 +158,26 @@ const updateSingleCountry = (country) => {
 
   const borderTitles = document.createElement("p");
   borderTitles.classList.add("border-title");
+  // console.log("country.borders: ", country.borders);
+  if (country.borders.length <= 0) {
+    // console.log("no border country");
+    if(document.querySelector('.border-heading')){
+      document.querySelector('.border-heading').remove();
+    }
+  }else{
+    if(!document.querySelector('.border-heading')){
+      const borderHeading = document.createElement("h4");
+      borderHeading.classList.add("border-heading");
+      borderHeading.innerText = "Border Countries:";
+      borderCountries.appendChild(borderHeading);
+    }
+  }
 
   country.borders.forEach((border) => {
     const clone = borderTitles.cloneNode(true);
 
     let borderCountry = getCountryDetails(border, "alpha3Code");
     console.log("here is my border country", borderCountry.borders);
-
-    if (borderCountry.borders <= 0) {
-      console.log("no border country");
-      document.querySelector(".border-countries h4").style.display = "none";
-    }
 
     clone.innerHTML = borderCountry.name;
 
