@@ -97,7 +97,7 @@ searchInputField.addEventListener("keyup", (e) => {
 const countrySecondScreen = document.querySelector(".country-second-screen");
 
 const updateSingleCountry = (country) => {
-  console.log("This is what country looks like", country);
+  //   console.log("This is what country looks like", country);
   //   set the flag image
   const countryFlagImage = countrySecondScreen.querySelector(".flag-image img");
   countryFlagImage.setAttribute("src", `${country.flag}`);
@@ -126,10 +126,10 @@ const updateSingleCountry = (country) => {
 
   //   set the currency
   const currency = countrySecondScreen.querySelector(".currencies");
-  let currenciesStr = '';
-  country.currencies.forEach( (currency, key) => {
-    if( key > 0 ){
-      currenciesStr += ', ';
+  let currenciesStr = "";
+  country.currencies.forEach((currency, key) => {
+    if (key > 0) {
+      currenciesStr += ", ";
     }
     currenciesStr += currency.name;
   });
@@ -137,36 +137,50 @@ const updateSingleCountry = (country) => {
 
   //   set the languages
   const languages = countrySecondScreen.querySelector(".languages");
-  let languagesStr = '';
-  country.languages.forEach( (language, key) => {
-    if( key > 0 ){
-      languagesStr += ', ';
+  let languagesStr = "";
+  country.languages.forEach((language, key) => {
+    if (key > 0) {
+      languagesStr += ", ";
     }
     languagesStr += language.name;
   });
   languages.innerHTML = `<strong>Languages: </strong> ${languagesStr}`;
-  
+
   //   set the border countries
-  const borderCountries = countrySecondScreen.querySelector(".border-countries");
+  const borderCountries = countrySecondScreen.querySelector(
+    ".border-countries"
+  );
   // const borderTitles = countrySecondScreen.querySelector(".border-countries .border-title");
-  const borderTitlesAll = countrySecondScreen.querySelectorAll(".border-countries .border-title");
-  borderTitlesAll.forEach(borderTitle => {
+  const borderTitlesAll = countrySecondScreen.querySelectorAll(
+    ".border-countries .border-title"
+  );
+  //   select the border country heading
+  const borderCountryHeading = countrySecondScreen.querySelector("h4");
+
+  // hide the border country heading if it doesn't exist
+  if (borderTitlesAll.length >= 1) {
+    borderCountryHeading.style.display = "none";
+  } else {
+    borderCountryHeading.style.display = "block";
+  }
+  // remove the pre-existing border titles append to the DOM when user goes to new country
+  borderTitlesAll.forEach((borderTitle) => {
     borderTitle.remove();
   });
 
-  const borderTitles = document.createElement('p');
-  borderTitles.classList.add('border-title');
-  
-  country.borders.forEach( (border) => {
+  const borderTitles = document.createElement("p");
+  borderTitles.classList.add("border-title");
+
+  country.borders.forEach((border) => {
     // languagesStr += language.name;
     const clone = borderTitles.cloneNode(true);
-    
-    let borderCountry = getCountryDetails( border, 'alpha3Code' );
+
+    let borderCountry = getCountryDetails(border, "alpha3Code");
     clone.innerHTML = borderCountry.name;
+
     clone.addEventListener("click", (e) => {
-      updateSingleCountry( borderCountry );
+      updateSingleCountry(borderCountry);
     });
-    // console.log( "getCountryDetails ",  borderCountry);
 
     borderCountries.appendChild(clone);
   });
@@ -179,7 +193,6 @@ const updateSingleCountry = (country) => {
     countriesContainer.style.display = "flex";
     searchBar.style.display = "flex";
   });
-
 };
 
 // getCountryDetails
@@ -188,10 +201,9 @@ const updateSingleCountry = (country) => {
 // idType (name, alpha2Code, alpha3Code, etc)
 //
 let returnVal;
-function getCountryDetails( countryQuery, idType ){
-
-  data.some( function( country ) {
-    if(country[idType] === countryQuery ){
+function getCountryDetails(countryQuery, idType) {
+  data.some(function (country) {
+    if (country[idType] === countryQuery) {
       returnVal = country;
     }
   });
