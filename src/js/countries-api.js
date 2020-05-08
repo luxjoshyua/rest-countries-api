@@ -72,7 +72,7 @@ searchInputField.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
   //   loop through each country
   data.forEach((country) => {
-    console.log("this is my data here", data);
+    // console.log("this is my data here", data);
     //   if the entered search matches the country name
     // let tSelector = ;
     let tCountryName = country.name.toLowerCase();
@@ -125,36 +125,40 @@ const updateSingleCountry = (country) => {
   domainName.innerHTML = `<strong>Top Level Domain: </strong>${country.topLevelDomain}`;
 
   //   set the currency
-  const currency = countrySecondScreen.querySelector(".currency");
-  currency.innerHTML = `<strong>Currency: </strong>${country.currencies[0].name}`;
+  const currency = countrySecondScreen.querySelector(".currencies");
+  let currenciesStr = '';
+  country.currencies.forEach( (currency, key) => {
+    if( key > 0 ){
+      currenciesStr += ', ';
+    }
+    currenciesStr += currency.name;
+  });
+  currency.innerHTML = `<strong>Currencies: </strong> ${currenciesStr}`;
 
   //   set the languages
   const languages = countrySecondScreen.querySelector(".languages");
-  let languagesStr = "";
-  country.languages.forEach((language, key) => {
-    if (key > 0) {
-      languagesStr += ", ";
+  let languagesStr = '';
+  country.languages.forEach( (language, key) => {
+    if( key > 0 ){
+      languagesStr += ', ';
     }
     languagesStr += language.name;
   });
   languages.innerHTML = `<strong>Languages: </strong> ${languagesStr}`;
-
+  
   //   set the border countries
-  const borderCountries = countrySecondScreen.querySelector(
-    ".border-countries"
-  );
+  const borderCountries = countrySecondScreen.querySelector(".border-countries");
+  const borderTitles = countrySecondScreen.querySelector(".border-countries .border-title");
+  country.borders.forEach( (border) => {
+    // languagesStr += language.name;
+    const clone = borderTitles.cloneNode(true);
+    
+    let borderCountry = getCountryDetails( border, 'alpha3Code' );
+    clone.innerHTML = borderCountry.name;
+    // console.log( "getCountryDetails ",  borderCountry);
 
-  let bordersStr = "";
-  country.borders.forEach((border, key) => {
-    const borderElement = document.createElement("span");
-    if (key > 0) {
-      bordersStr += ", ";
-    }
-    bordersStr += country.borders;
+    borderCountries.appendChild(clone);
   });
-
-  borderCountries.innerHTML = `<strong>Borders: </strong> ${bordersStr}`;
-  //   borderCountries.innerHTML = `<strong>Border Countries: </strong> ${bordersStr}`;
 
   //   go back button
   const goBackButton = document.querySelector(".back-button");
@@ -164,4 +168,21 @@ const updateSingleCountry = (country) => {
     countriesContainer.style.display = "flex";
     searchBar.style.display = "flex";
   });
+
 };
+
+// getCountryDetails
+// params
+// countryQuery (France, FRA, FR, etc)
+// idType (name, alpha2Code, alpha3Code, etc)
+//
+let returnVal;
+function getCountryDetails( countryQuery, idType ){
+
+  data.some( function( country ) {
+    if(country[idType] === countryQuery ){
+      returnVal = country;
+    }
+  });
+  return returnVal;
+}
