@@ -158,9 +158,9 @@ const updateSingleCountry = (country) => {
 
   const borderTitles = document.createElement("p");
   borderTitles.classList.add("border-title");
-  console.log("country.borders: ", country.borders);
+  // console.log("country.borders: ", country.borders);
   if (country.borders.length <= 0) {
-    console.log("no border country");
+    // console.log("no border country");
     if(document.querySelector('.border-heading')){
       document.querySelector('.border-heading').remove();
     }
