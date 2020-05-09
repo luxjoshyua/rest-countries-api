@@ -35,7 +35,7 @@ const createCountry = (data) => {
     // set the image here
     clone.classList.add("country-" + `${country.alpha3Code}`);
     // add the region to the class so can access in the DOM
-    clone.classList.add("country-" + `${country.region}`);
+    clone.classList.add("region-" + `${country.region}`);
     clone
       .querySelector(".country-image")
       .setAttribute("src", `${country.flag}`);
@@ -237,7 +237,7 @@ const showAfricaCountries = (data) => {
     const countrySingle = document.querySelector(".country-single");
     // console.log("here is my country single", countrySingle); // countrySingle is an array of 251 elements
 
-    let countryRegionDOM = document.querySelector(".country-" + country.region);
+    let countryRegionDOM = document.querySelector(".region-" + country.region);
     console.log(countryRegionDOM);
     if (countrySingle.classList.contains("country-Africa")) {
       console.log("Only show Africa countries");
@@ -247,17 +247,5 @@ const showAfricaCountries = (data) => {
       countryRegionDOM.classList.add("hidden");
       countryRegionDOM.classList.remove("visible");
     }
-
-    // if (countryRegion.includes(searchString)) {
-    //   //   add a class of visible to the relevant country
-    //   countryRegionDOM.classList.add("visible");
-    //   countryRegionDOM.classList.remove("hidden");
-    // }
-    // //   if it doesn't match the search
-    // else {
-    //   //   add a class of hidden to all the not-matching countries
-    //   countryRegionDOM.classList.add("hidden");
-    //   countryRegionDOM.classList.remove("visible");
-    // }
   });
 };
