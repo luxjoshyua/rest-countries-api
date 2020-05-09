@@ -13,28 +13,29 @@ fetch(apiURL)
     data = res;
     createCountry(res);
     // remove class loading here
+    // showAfricaCountries(res);
   })
   .catch((error) => {
     console.log(
       "Our apologies but there is a" +
         error +
-        "with our API, it will be back up and running shortly"
+        " with our API, it will be back up and running shortly"
     );
   });
 
 //   populate the country tiles
 const countriesContainer = document.querySelector(".countries-inner");
 const searchBar = document.querySelector(".search-inner");
-// console.log("Here test two", data);
 const createCountry = (data) => {
   // go through each country and populate it with the data
-  //   console.log("This is what data looks like here", data);
   data.forEach((country) => {
     const countryItem = document.querySelector(".country-single");
     const clone = countryItem.cloneNode(true);
     countriesContainer.appendChild(clone);
     // set the image here
     clone.classList.add("country-" + `${country.alpha3Code}`);
+    // add the region to the class so can access in the DOM
+    clone.classList.add("country-" + `${country.region}`);
     clone
       .querySelector(".country-image")
       .setAttribute("src", `${country.flag}`);
@@ -146,45 +147,38 @@ const updateSingleCountry = (country) => {
   const borderCountries = countrySecondScreen.querySelector(
     ".border-countries"
   );
-
   const borderTitlesAll = countrySecondScreen.querySelectorAll(
     ".border-countries .border-title"
   );
-
   // remove the pre-existing border titles append to the DOM when user goes to new country
   borderTitlesAll.forEach((borderTitle) => {
     borderTitle.remove();
   });
 
+  //   check if there are border countries, remove or add depending
   const borderTitles = document.createElement("p");
   borderTitles.classList.add("border-title");
-  // console.log("country.borders: ", country.borders);
+  const borderHeading = document.querySelector(".border-heading");
   if (country.borders.length <= 0) {
-    // console.log("no border country");
-    if(document.querySelector('.border-heading')){
-      document.querySelector('.border-heading').remove();
+    if (borderHeading) {
+      borderHeading.remove();
     }
-  }else{
-    if(!document.querySelector('.border-heading')){
+  } else {
+    if (!borderHeading) {
       const borderHeading = document.createElement("h4");
       borderHeading.classList.add("border-heading");
       borderHeading.innerText = "Border Countries:";
       borderCountries.appendChild(borderHeading);
     }
   }
-
+  // loop through each border and show the clicked country/s
   country.borders.forEach((border) => {
     const clone = borderTitles.cloneNode(true);
-
     let borderCountry = getCountryDetails(border, "alpha3Code");
-    console.log("here is my border country", borderCountry.borders);
-
     clone.innerHTML = borderCountry.name;
-
     clone.addEventListener("click", (e) => {
       updateSingleCountry(borderCountry);
     });
-
     borderCountries.appendChild(clone);
   });
 
@@ -210,3 +204,60 @@ function getCountryDetails(countryQuery, idType) {
   });
   return returnVal;
 }
+
+// Show the regions function
+const dropDown = document.querySelector(".dropdown-content");
+
+dropDown.addEventListener("click", (e) => {
+  if (e.target.matches("#africa")) {
+    console.log("africa has been successfully clicked");
+    showAfricaCountries(data);
+  }
+
+  if (e.target.matches("#america")) {
+    console.log("america has been successfully clicked");
+  }
+
+  if (e.target.matches("#asia")) {
+    console.log("asia has been successfully clicked");
+  }
+
+  if (e.target.matches("#europe")) {
+    console.log("europe has been successfully clicked");
+  }
+
+  if (e.target.matches("#oceania")) {
+    console.log("oceania has been successfully clicked");
+  }
+});
+
+const showAfricaCountries = (data) => {
+  console.log("Show Africa function has been reached");
+  data.forEach((country) => {
+    const countrySingle = document.querySelector(".country-single");
+    // console.log("here is my country single", countrySingle); // countrySingle is an array of 251 elements
+
+    let countryRegionDOM = document.querySelector(".country-" + country.region);
+    console.log(countryRegionDOM);
+    if (countrySingle.classList.contains("country-Africa")) {
+      console.log("Only show Africa countries");
+      countryRegionDOM.classList.add("visible");
+      countryRegionDOM.classList.remove("hidden");
+    } else {
+      countryRegionDOM.classList.add("hidden");
+      countryRegionDOM.classList.remove("visible");
+    }
+
+    // if (countryRegion.includes(searchString)) {
+    //   //   add a class of visible to the relevant country
+    //   countryRegionDOM.classList.add("visible");
+    //   countryRegionDOM.classList.remove("hidden");
+    // }
+    // //   if it doesn't match the search
+    // else {
+    //   //   add a class of hidden to all the not-matching countries
+    //   countryRegionDOM.classList.add("hidden");
+    //   countryRegionDOM.classList.remove("visible");
+    // }
+  });
+};
