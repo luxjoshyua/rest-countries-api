@@ -232,15 +232,21 @@ dropDown.addEventListener("click", (e) => {
 });
 
 const showAfricaCountries = (data) => {
-  console.log("Show Africa function has been reached");
+  //   console.log("Show Africa function has been reached");
+
+  //   get the data, and loop through each country
   data.forEach((country) => {
+    console.log("country = ", country);
+    //   select all the countries in the DOM
     const countrySingle = document.querySelector(".country-single");
     // console.log("here is my country single", countrySingle); // countrySingle is an array of 251 elements
 
+    // select the country according to the region class
     let countryRegionDOM = document.querySelector(".region-" + country.region);
-    console.log(countryRegionDOM);
+
+    // console.log(countryRegionDOM);
+
     if (countrySingle.classList.contains("country-Africa")) {
-      console.log("Only show Africa countries");
       countryRegionDOM.classList.add("visible");
       countryRegionDOM.classList.remove("hidden");
     } else {
