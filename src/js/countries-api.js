@@ -91,9 +91,19 @@ const createCountry = (data) => {
       ".region"
     ).innerHTML = `<strong>Region: </strong>${country.region}`;
 
-    clone.querySelector(
-      ".capital"
-    ).innerHTML = `<strong>Capital: </strong>${country.capital}`;
+    // clone.querySelector(
+    //   ".capital"
+    // ).innerHTML = `<strong>Capital: </strong>${country.capital}`;
+
+    if (country.capital === "") {
+      clone.querySelector(
+        ".capital"
+      ).innerHTML = `<strong>Capital: </strong> Not Defined`;
+    } else {
+      clone.querySelector(
+        ".capital"
+      ).innerHTML = `<strong>Capital: </strong>${country.capital}`;
+    }
 
     // show the country slide for a single country
     clone.addEventListener("click", (e) => {
@@ -155,13 +165,28 @@ const updateSingleCountry = (country) => {
 
   //   set the region
   const region = countrySecondScreen.querySelector(".region");
-  region.innerHTML = `<strong>Region: </strong>${country.region}`;
+  if (country.region === "") {
+    region.innerHTML = `<strong>Region: </strong>Not defined`;
+  } else {
+    region.innerHTML = `<strong>Region: </strong>${country.region}`;
+  }
+
   //   set the subregion
   const subRegion = countrySecondScreen.querySelector(".sub-region");
-  subRegion.innerHTML = `<strong>Sub Region: </strong>${country.subregion}`;
+  if (country.subregion === "") {
+    subRegion.innerHTML = `<strong>Sub Region: </strong>Not defined`;
+  } else {
+    subRegion.innerHTML = `<strong>Sub Region: </strong>${country.subregion}`;
+  }
+
   //   set the capital
   const capital = countrySecondScreen.querySelector(".capital");
-  capital.innerHTML = `<strong>Capital: </strong>${country.capital}`;
+  if (country.capital === "") {
+    capital.innerHTML = `<strong>Capital: </strong>Not defined`;
+  } else {
+    capital.innerHTML = `<strong>Capital: </strong>${country.capital}`;
+  }
+
   //   set the domain name
   const domainName = countrySecondScreen.querySelector(".domain-name");
   domainName.innerHTML = `<strong>Top Level Domain: </strong>${country.topLevelDomain}`;
