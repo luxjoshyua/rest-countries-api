@@ -22,40 +22,40 @@ fetch(apiURL)
         " with our API, it will be back up and running shortly"
     );
   });
-  
-function updateRegionFilter(){
+
+function updateRegionFilter() {
   // store all potential regions first
   let regionsArr = [];
-  let nonRegionStr = 'Not-specified';
-  data.forEach( ( country ) => {
-    if( !regionsArr.includes( country.region ) && !regionsArr.includes( nonRegionStr ) ){
-
-      if( country.region === "" ){
-        regionsArr.push( nonRegionStr );
-      }else{
-        regionsArr.push( country.region );
+  let nonRegionStr = "Not-specified";
+  data.forEach((country) => {
+    if (
+      !regionsArr.includes(country.region) &&
+      !regionsArr.includes(nonRegionStr)
+    ) {
+      if (country.region === "") {
+        regionsArr.push(nonRegionStr);
+      } else {
+        regionsArr.push(country.region);
       }
     }
-    
   });
 
   //update the dom
 
-  let filterDOM = document.querySelector( '.dropdown-content' );
-  filterDOM.innerHTML = '';
+  let filterDOM = document.querySelector(".dropdown-content");
+  filterDOM.innerHTML = "";
 
-  regionsArr.forEach(region => {
-    let tDOM = document.createElement('a');
+  regionsArr.forEach((region) => {
+    let tDOM = document.createElement("a");
     tDOM.setAttribute("href", "#");
-    tDOM.setAttribute("id", region );
+    tDOM.setAttribute("id", region);
     tDOM.innerText = region;
     filterDOM.appendChild(tDOM);
   });
 
   filterDOM.addEventListener("click", (e) => {
-    filterCountriesRegion( e.target.getAttribute("id") );
-  });  
-
+    filterCountriesRegion(e.target.getAttribute("id"));
+  });
 }
 
 //   populate the country tiles
@@ -70,20 +70,27 @@ const createCountry = (data) => {
     // set the image here
     // clone.classList.add("country-" + `${country.alpha3Code}`);
     // add the region to the class so can access in the DOM
-    let tRegion = country.region ? " region-" + country.region : ' region-Not-specified';
-    clone.setAttribute("class", "country-single country-" + `${country.alpha3Code}` + tRegion);
+    let tRegion = country.region
+      ? " region-" + country.region
+      : " region-Not-specified";
+    clone.setAttribute(
+      "class",
+      "country-single country-" + `${country.alpha3Code}` + tRegion
+    );
     clone
       .querySelector(".country-image")
       .setAttribute("src", `${country.flag}`);
     clone.querySelector(".country-image").setAttribute("width", "100%");
     clone.querySelector(".country-name").innerHTML = `${country.name}`;
+
     clone.querySelector(
       ".population"
-    ).innerHTML = `<strong>Population: </strong>${country.population}`;
+    ).innerHTML = `<strong>Population: </strong>${country.population.toLocaleString()}`;
+
     clone.querySelector(
       ".region"
     ).innerHTML = `<strong>Region: </strong>${country.region}`;
-    
+
     clone.querySelector(
       ".capital"
     ).innerHTML = `<strong>Capital: </strong>${country.capital}`;
@@ -144,7 +151,8 @@ const updateSingleCountry = (country) => {
   nativeName.innerHTML = `<strong>Native Name: </strong>${country.nativeName}`;
   //   set the population
   const population = countrySecondScreen.querySelector(".population");
-  population.innerHTML = `<strong>Population: </strong>${country.population}`;
+  population.innerHTML = `<strong>Population: </strong>${country.population.toLocaleString()}`;
+
   //   set the region
   const region = countrySecondScreen.querySelector(".region");
   region.innerHTML = `<strong>Region: </strong>${country.region}`;
@@ -242,25 +250,21 @@ function getCountryDetails(countryQuery, idType) {
   return returnVal;
 }
 
-const filterCountriesRegion = ( regionStr ) => {
-
+const filterCountriesRegion = (regionStr) => {
+  // select each country in the first screen in the DOM
   const countryDOM = document.getElementsByClassName("country-single");
 
   // get the data, and loop through each country
-
-  Array.from( countryDOM ).forEach( function( country ) {
-
+  Array.from(countryDOM).forEach(function (country) {
     // select the country according to the region class
     let tRegionStr = "region-" + regionStr;
-    country.classList.add("hidden");
+    country.classList.add("hidden");
 
-    if ( country.classList.contains( tRegionStr )) {
+    if (country.classList.contains(tRegionStr)) {
       country.classList.add("visible");
       country.classList.remove("hidden");
     } else {
-       country.classList.remove("visible");
+      country.classList.remove("visible");
     }
-    
   });
-
 };
