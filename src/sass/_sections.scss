@@ -50,7 +50,6 @@
         display: flex;
         justify-content: space-between;
         border-radius: 4px;
-
         /* Dropdown button */
         .dropbtn {
           border: none;
@@ -86,7 +85,6 @@
           }
         }
       }
-
       /* Show the dropdown menu on hover */
       .dropdown:hover .dropdown-content {
         display: block;
@@ -130,7 +128,6 @@
             object-fit: cover;
           }
         }
-
         .content {
           padding: 22px 26px;
           .country-name {
