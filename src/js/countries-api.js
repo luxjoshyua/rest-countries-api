@@ -36,6 +36,7 @@ function updateRegionFilter() {
         regionsArr.push(nonRegionStr);
       } else {
         regionsArr.push(country.region);
+        regionsArr.sort();
       }
     }
   });
@@ -46,6 +47,7 @@ function updateRegionFilter() {
   filterDOM.innerHTML = "";
 
   regionsArr.forEach((region) => {
+    // console.log("here is what my region looks like= ", region);
     let tDOM = document.createElement("a");
     tDOM.setAttribute("href", "#");
     tDOM.setAttribute("id", region);
