@@ -12,8 +12,8 @@ fetch(apiURL)
     // console.log("this is what res looks like", res);
     data = res;
     createCountry(res);
+    updateRegionFilter();
     // remove class loading here
-    // showAfricaCountries(res);
   })
   .catch((error) => {
     console.log(
@@ -22,6 +22,41 @@ fetch(apiURL)
         " with our API, it will be back up and running shortly"
     );
   });
+  
+function updateRegionFilter(){
+  // store all potential regions first
+  let regionsArr = [];
+  let nonRegionStr = 'Not-specified';
+  data.forEach( ( country ) => {
+    if( !regionsArr.includes( country.region ) && !regionsArr.includes( nonRegionStr ) ){
+
+      if( country.region === "" ){
+        regionsArr.push( nonRegionStr );
+      }else{
+        regionsArr.push( country.region );
+      }
+    }
+    
+  });
+
+  //update the dom
+
+  let filterDOM = document.querySelector( '.dropdown-content' );
+  filterDOM.innerHTML = '';
+
+  regionsArr.forEach(region => {
+    let tDOM = document.createElement('a');
+    tDOM.setAttribute("href", "#");
+    tDOM.setAttribute("id", region );
+    tDOM.innerText = region;
+    filterDOM.appendChild(tDOM);
+  });
+
+  filterDOM.addEventListener("click", (e) => {
+    filterCountriesRegion( e.target.getAttribute("id") );
+  });  
+
+}
 
 //   populate the country tiles
 const countriesContainer = document.querySelector(".countries-inner");
@@ -33,9 +68,10 @@ const createCountry = (data) => {
     const clone = countryItem.cloneNode(true);
     countriesContainer.appendChild(clone);
     // set the image here
-    clone.classList.add("country-" + `${country.alpha3Code}`);
+    // clone.classList.add("country-" + `${country.alpha3Code}`);
     // add the region to the class so can access in the DOM
-    clone.classList.add("region-" + `${country.region}`);
+    let tRegion = country.region ? " region-" + country.region : ' region-Not-specified';
+    clone.setAttribute("class", "country-single country-" + `${country.alpha3Code}` + tRegion);
     clone
       .querySelector(".country-image")
       .setAttribute("src", `${country.flag}`);
@@ -47,6 +83,7 @@ const createCountry = (data) => {
     clone.querySelector(
       ".region"
     ).innerHTML = `<strong>Region: </strong>${country.region}`;
+    
     clone.querySelector(
       ".capital"
     ).innerHTML = `<strong>Capital: </strong>${country.capital}`;
@@ -205,53 +242,25 @@ function getCountryDetails(countryQuery, idType) {
   return returnVal;
 }
 
-// Show the regions function
-const dropDown = document.querySelector(".dropdown-content");
+const filterCountriesRegion = ( regionStr ) => {
 
-dropDown.addEventListener("click", (e) => {
-  if (e.target.matches("#africa")) {
-    console.log("africa has been successfully clicked");
-    showAfricaCountries(data);
-  }
+  const countryDOM = document.getElementsByClassName("country-single");
 
-  if (e.target.matches("#america")) {
-    console.log("america has been successfully clicked");
-  }
+  // get the data, and loop through each country
 
-  if (e.target.matches("#asia")) {
-    console.log("asia has been successfully clicked");
-  }
-
-  if (e.target.matches("#europe")) {
-    console.log("europe has been successfully clicked");
-  }
-
-  if (e.target.matches("#oceania")) {
-    console.log("oceania has been successfully clicked");
-  }
-});
-
-const showAfricaCountries = (data) => {
-  //   console.log("Show Africa function has been reached");
-
-  //   get the data, and loop through each country
-  data.forEach((country) => {
-    console.log("country = ", country);
-    //   select all the countries in the DOM
-    const countrySingle = document.querySelector(".country-single");
-    // console.log("here is my country single", countrySingle); // countrySingle is an array of 251 elements
+  Array.from( countryDOM ).forEach( function( country ) {
 
     // select the country according to the region class
-    let countryRegionDOM = document.querySelector(".region-" + country.region);
+    let tRegionStr = "region-" + regionStr;
+    country.classList.add("hidden");
 
-    // console.log(countryRegionDOM);
-
-    if (countrySingle.classList.contains("country-Africa")) {
-      countryRegionDOM.classList.add("visible");
-      countryRegionDOM.classList.remove("hidden");
+    if ( country.classList.contains( tRegionStr )) {
+      country.classList.add("visible");
+      country.classList.remove("hidden");
     } else {
-      countryRegionDOM.classList.add("hidden");
-      countryRegionDOM.classList.remove("visible");
+       country.classList.remove("visible");
     }
+    
   });
+
 };
