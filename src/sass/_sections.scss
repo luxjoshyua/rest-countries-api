@@ -48,6 +48,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.6;
+        }
       }
     }
     .search-filter {
@@ -63,6 +67,9 @@
         display: flex;
         justify-content: space-between;
         border-radius: 4px;
+        &:hover {
+          cursor: pointer;
+        }
         /* Dropdown button */
         .dropbtn {
           border: none;
@@ -75,7 +82,7 @@
       }
       .navbar a:hover,
       .dropdown:hover .dropbtn {
-        opacity: 0.8;
+        opacity: 0.6;
         transition: all 2s ease-in-out;
       }
       /* Dropdown content (hidden by default) */
@@ -94,7 +101,7 @@
           color: $black;
           &:hover {
             background-color: $white;
-            opacity: 0.8;
+            opacity: 0.6;
           }
         }
       }
@@ -242,7 +249,7 @@
                 display: none;
               }
               &:hover {
-                opacity: 0.8;
+                opacity: 0.6;
                 border: 1px solid $black;
               }
               display: inline-block;
