@@ -79,6 +79,15 @@
           margin: 0; /* Important for vertical align on mobile phones */
           font-size: 1em;
         }
+        .down-arrow {
+          padding: 0 10px;
+        }
+        .active-region {
+          padding: 6px 10px;
+          border: 1px solid;
+          color: $black;
+          border-radius: 4px;
+        }
       }
       .navbar a:hover,
       .dropdown:hover .dropbtn {

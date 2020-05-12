@@ -17,6 +17,7 @@ export default function updateRegionFilter() {
       }
     }
   });
+  //   console.log("What does regions array look like, = ", regionsArr);
 
   //update the dom
   let filterDOM = document.querySelector(".dropdown-content");
@@ -33,6 +34,15 @@ export default function updateRegionFilter() {
 
   filterDOM.addEventListener("click", (e) => {
     filterCountriesRegion(e.target.getAttribute("id"));
+    console.log(e.target.getAttribute("id"));
+    //   add the active region to the dropdown menu
+    const dropdownParent = document.querySelector(".dropdown");
+    const activeRegionSpan = document.createElement("span");
+    const activeRegion = e.target.getAttribute("id");
+    activeRegionSpan.classList.add("active-region");
+    activeRegionSpan.innerHTML = "<span>Active: </span>" + activeRegion;
+
+    dropdownParent.appendChild(activeRegionSpan);
   });
 }
 
