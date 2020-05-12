@@ -36,6 +36,20 @@
           outline: none;
         }
       }
+      input[type="search"]::-webkit-search-decoration,
+      input[type="search"]::-webkit-search-cancel-button,
+      input[type="search"]::-webkit-search-results-button,
+      input[type="search"]::-webkit-search-results-decoration {
+        -webkit-appearance: none;
+      }
+      .fa-times-circle {
+        min-height: 40px;
+        min-width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+      }
     }
     .search-filter {
       box-shadow: -2px 4px 26px -4px #0000008a;

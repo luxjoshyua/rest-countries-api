@@ -1,4 +1,4 @@
-import { country2 } from "./country-tiles";
+// import { country2 } from "./country-tiles";
 import { data } from "./countries-api";
 let returnVal;
 
@@ -8,9 +8,8 @@ const countrySecondScreen = document.querySelector(".country-second-screen");
 const countriesContainer = document.querySelector(".countries-inner");
 const searchBar = document.querySelector(".search-inner");
 
-export default function updateSingleCountry( country2 ) {
+export default function updateSingleCountry(country2) {
   //   set the flag image
-  console.log("What does my country look like, = ", country2);
   const countryFlagImage = countrySecondScreen.querySelector(".flag-image img");
   countryFlagImage.setAttribute("src", `${country2.flag}`);
   countryFlagImage.setAttribute("width", "100%");
@@ -129,4 +128,4 @@ export default function updateSingleCountry( country2 ) {
     });
     return returnVal;
   }
-};
+}

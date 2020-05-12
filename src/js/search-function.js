@@ -3,6 +3,7 @@ import { data } from "./countries-api";
 // Search function
 // add event listener to the search input field
 const searchInputField = document.getElementById("site-search");
+
 // e is the event object
 searchInputField.addEventListener("keyup", (e) => {
   const searchString = e.target.value.toLowerCase();
@@ -22,5 +23,19 @@ searchInputField.addEventListener("keyup", (e) => {
       countryDOM.classList.add("hidden");
       countryDOM.classList.remove("visible");
     }
+  });
+});
+
+// when user clicks x icon, update the countries list to be all
+// visible again
+const closeIcon = document.querySelector(".fa-times-circle");
+closeIcon.addEventListener("click", (e) => {
+  console.log("click is registering", e);
+  // select each country in the first screen in the DOM
+  const countryDOM = document.getElementsByClassName("country-single");
+  // get the data, and loop through each country
+  Array.from(countryDOM).forEach(function (country) {
+    country.classList.add("visible");
+    country.classList.remove("hidden");
   });
 });
