@@ -2,16 +2,13 @@
 $screen-mobile: 600px;
 
 // Tablets and small desktops
-$screen-med: 1200px;
+$screen-med: 1000px;
 
 // Large screens
 $screen-large: 1600px;
 
 // XL screens
 // $screen-xl: 2000px;
-
-
-
 
 // Small devices - <= 600px
 @mixin sm {
@@ -22,7 +19,7 @@ $screen-large: 1600px;
 
 // Medium devices - <= 1200px
 @mixin md {
-  @media (max-width: #{$screen-med}) {
+  @media (max-width: #{$screen-med}) and (min-width: 700px) {
     @content;
   }
 }

@@ -2,8 +2,6 @@ import "./search-function";
 import createCountry from "./country-tiles";
 const apiURL = "https://restcountries.eu/rest/v2/all";
 
-// let offset = 0;
-// let data = [];
 // need to export the data so is accessible in our search-function.js
 export let data = [];
 
@@ -15,7 +13,6 @@ fetch(apiURL)
     // check the api is pulling expected data
     // console.log("this is what res looks like", res);
     data = res;
-    // createCountry(res);
     createCountry();
     updateRegionFilter();
     // remove class loading here

@@ -48,7 +48,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: red;
       }
     }
     .search-filter {
@@ -173,6 +172,7 @@
       &:first-of-type {
         margin-top: 0;
         justify-content: flex-start;
+
         @include sm {
           align-items: flex-start;
           padding: 0px 32px;
@@ -197,6 +197,9 @@
       justify-content: space-between;
       align-items: flex-start;
       margin-top: 32px;
+      @include md {
+        justify-content: stretch;
+      }
       @include sm {
         flex-direction: column;
         justify-content: center;
@@ -210,9 +213,13 @@
         min-width: 600px;
         max-width: 640px;
         padding: 0 26px;
-        @include sm {
+        @include md {
           min-width: 320px;
           max-width: 100%;
+          padding: 0 22px;
+        }
+        @include sm {
+          padding: 22px 12px;
         }
         .heading {
           padding-bottom: 16px;
