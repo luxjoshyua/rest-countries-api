@@ -40,6 +40,8 @@ export default function updateRegionFilter() {
     const activeRegionSpan = document.createElement("span");
     const activeRegion = e.target.getAttribute("id");
     const currentActiveReg = document.querySelectorAll('.active-region');
+    const regionCloseBtn = document.createElement("i");
+    regionCloseBtn.classList.add("far", "fa-times-circle");
     
     if( currentActiveReg.length > 0 ){
       currentActiveReg.forEach(element => {
@@ -48,9 +50,24 @@ export default function updateRegionFilter() {
     }
 
     activeRegionSpan.classList.add("active-region");
+
     activeRegionSpan.innerHTML = "<span>Active: </span>" + activeRegion;
+    activeRegionSpan.appendChild(regionCloseBtn);
+
+    regionCloseBtn.addEventListener('click', (e) => {
+      e.target.parentNode.remove();
+      toggleCountries('remove','hidden');
+    });
 
     dropdownParent.appendChild(activeRegionSpan);
+  });
+}
+const toggleCountries = (toggleType, toggleValue) => {
+  let countries = document.querySelectorAll('.country-single');
+  Array.from( countries ).forEach( country => {
+    if( toggleType === 'remove'){
+      country.classList.remove( toggleValue );
+    }
   });
 }
 
