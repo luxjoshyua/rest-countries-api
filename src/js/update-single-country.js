@@ -1,3 +1,4 @@
+// import { country2 } from "./country-tiles";
 import { data } from "./countries-api";
 let returnVal;
 
