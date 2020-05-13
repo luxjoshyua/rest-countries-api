@@ -39,37 +39,38 @@ export default function updateRegionFilter() {
     const dropdownParent = document.querySelector(".dropdown");
     const activeRegionSpan = document.createElement("span");
     const activeRegion = e.target.getAttribute("id");
-    const currentActiveReg = document.querySelectorAll('.active-region');
+    const currentActiveReg = document.querySelectorAll(".active-region");
     const regionCloseBtn = document.createElement("i");
-    regionCloseBtn.classList.add("far", "fa-times-circle");
-    
-    if( currentActiveReg.length > 0 ){
-      currentActiveReg.forEach(element => {
-        element.remove();  
-      });      
+    regionCloseBtn.classList.add("far", "fa-times-circle", "region-close-icon");
+
+    if (currentActiveReg.length > 0) {
+      currentActiveReg.forEach((element) => {
+        element.remove();
+      });
     }
 
     activeRegionSpan.classList.add("active-region");
 
-    activeRegionSpan.innerHTML = "<span>Active: </span>" + activeRegion;
+    activeRegionSpan.innerHTML = "<span>Active:</span>" + " " + activeRegion;
     activeRegionSpan.appendChild(regionCloseBtn);
 
-    regionCloseBtn.addEventListener('click', (e) => {
+    regionCloseBtn.addEventListener("click", (e) => {
       e.target.parentNode.remove();
-      toggleCountries('remove','hidden');
+      toggleCountries("remove", "hidden");
     });
 
     dropdownParent.appendChild(activeRegionSpan);
   });
 }
 const toggleCountries = (toggleType, toggleValue) => {
-  let countries = document.querySelectorAll('.country-single');
-  Array.from( countries ).forEach( country => {
-    if( toggleType === 'remove'){
-      country.classList.remove( toggleValue );
+  let countries = document.querySelectorAll(".country-single");
+  // turn countries into an array, so can then loop through
+  Array.from(countries).forEach((country) => {
+    if (toggleType === "remove") {
+      country.classList.remove(toggleValue);
     }
   });
-}
+};
 
 const filterCountriesRegion = (regionStr) => {
   // select each country in the first screen in the DOM

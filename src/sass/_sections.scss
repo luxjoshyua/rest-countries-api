@@ -66,6 +66,7 @@
         min-width: 200px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         border-radius: 4px;
         &:hover {
           cursor: pointer;
@@ -83,10 +84,20 @@
           padding: 0 10px;
         }
         .active-region {
+          display: flex;
+          align-items: center;
           padding: 6px 10px;
           border: 1px solid;
           color: $black;
           border-radius: 4px;
+          margin-left: 6px;
+          span {
+            padding-right: 6px;
+          }
+        }
+        //   style region close icon
+        .region-close-icon {
+          padding-left: 6px;
         }
       }
       .navbar a:hover,

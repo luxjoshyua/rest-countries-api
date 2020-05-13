@@ -33,9 +33,15 @@ export default (createCountry) => {
       ".population"
     ).innerHTML = `<strong>Population: </strong>${country.population.toLocaleString()}`;
 
-    clone.querySelector(
-      ".region"
-    ).innerHTML = `<strong>Region: </strong>${country.region}`;
+    if (country.region === "") {
+      clone.querySelector(
+        ".region"
+      ).innerHTML = `<strong>Region: </strong> Not Defined`;
+    } else {
+      clone.querySelector(
+        ".region"
+      ).innerHTML = `<strong>Region: </strong>${country.region}`;
+    }
 
     if (country.capital === "") {
       clone.querySelector(
