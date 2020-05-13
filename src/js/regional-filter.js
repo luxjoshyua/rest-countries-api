@@ -39,6 +39,14 @@ export default function updateRegionFilter() {
     const dropdownParent = document.querySelector(".dropdown");
     const activeRegionSpan = document.createElement("span");
     const activeRegion = e.target.getAttribute("id");
+    const currentActiveReg = document.querySelectorAll('.active-region');
+    
+    if( currentActiveReg.length > 0 ){
+      currentActiveReg.forEach(element => {
+        element.remove();  
+      });      
+    }
+
     activeRegionSpan.classList.add("active-region");
     activeRegionSpan.innerHTML = "<span>Active: </span>" + activeRegion;
 
